@@ -59,6 +59,23 @@ table{width:100%;border-collapse:collapse;font-size:13px}td,th{padding:6px 3px;t
 #toast{position:fixed;left:50%;transform:translateX(-50%);bottom:80px;background:#0a4f52;color:#fff;padding:10px 16px;border-radius:14px;font-size:14px;z-index:30;display:flex;gap:14px;align-items:center;box-shadow:0 4px 14px rgba(0,0,0,.3)}
 #toast button{background:none;border:0;color:#ffb8aa;font-weight:700;font-size:14px;cursor:pointer}
 .sw{display:flex;justify-content:space-between;align-items:center;padding:8px 0;border-bottom:1px solid var(--line)}
+
+.tpb{display:flex;align-items:center;gap:8px;width:100%;text-align:left;padding:12px;border:1.5px solid var(--line);border-radius:12px;font-size:18px;background:var(--card);color:var(--ink);font-family:inherit;cursor:pointer}
+.tpb b{font-weight:700;letter-spacing:.5px}.tpb.empty b{color:var(--mut);font-weight:500}
+.step{display:flex;align-items:center;justify-content:center;gap:22px;padding:6px 0}
+.step button{width:52px;height:52px;border-radius:50%;border:0;background:var(--pri2);color:var(--pri);font-size:30px;font-weight:700;line-height:1;cursor:pointer}
+.step b{font-size:34px;min-width:44px;text-align:center}
+.tpm{position:fixed;inset:0;background:rgba(0,0,0,.45);z-index:40;display:flex;align-items:flex-end;justify-content:center}
+.tpbox{background:var(--card);color:var(--ink);border-radius:24px 24px 0 0;width:100%;max-width:500px;padding:16px 16px 22px}
+.tpbox h3{margin:0 0 8px;text-align:center}
+.tpw{position:relative;display:flex;justify-content:center;gap:6px;height:220px;margin:6px 0 12px}
+.tpw:before{content:"";position:absolute;left:8px;right:8px;top:88px;height:44px;border-radius:12px;background:var(--pri2);z-index:0}
+.tpc{position:relative;z-index:1;width:92px;height:220px;overflow-y:scroll;scroll-snap-type:y mandatory;scrollbar-width:none;-webkit-overflow-scrolling:touch}
+.tpc::-webkit-scrollbar{display:none}
+.tpc div{height:44px;line-height:44px;text-align:center;font-size:24px;scroll-snap-align:center;cursor:pointer}
+.tpc .pad{height:88px;scroll-snap-align:none}
+.tpsep{position:relative;z-index:1;font-size:26px;font-weight:700;line-height:220px}
+.tpd{display:flex;gap:6px;justify-content:center;flex-wrap:wrap;margin-bottom:4px}
 </style>
 </head>
 <body>
@@ -100,7 +117,7 @@ const TX={
 app:['Mama Pro','Mama Pro'],by:['by Feruza A\'zam','by Feruza A\'zam'],addKid:['Bola qo\'shish','Добавить ребёнка'],kidsT:['Bolalar','Дети'],delKid:['Bolani o\'chirish','Удалить ребёнка'],delKidSure:['Hamma yozuvlari bilan o\'chiriladi. Yana bosing','Будет удалён со всеми записями. Нажмите ещё раз'],kidAdded:['Bola qo\'shildi','Ребёнок добавлен'],kidDeleted:['Bola o\'chirildi','Ребёнок удалён'],newKid:['Yangi bola','Новый ребёнок'],onlyOne:['Kamida bitta bola qolishi kerak','Должен остаться хотя бы один ребёнок'],chooseLang:['Tilni tanlang','Выберите язык'],
 welcome:['Bola uyqusi, ovqati va kundaligi — bir joyda','Сон, питание и дневник малыша — в одном месте'],
 next:['Davom etish','Далее'],nameQ:['Bolangizning ismi?','Как зовут малыша?'],namePh:['Ism','Имя'],
-birthQ:['Tug\'ilgan sanasi?','Дата рождения?'],napsQ:['Kuniga necha marta kunduzi uxlaydi?','Сколько дневных снов в день?'],naps:['marta','раз'],
+birthQ:['Tug\'ilgan sanasi?','Дата рождения?'],napsQ:['Kuniga necha mahal kunduzi uxlaydi?','Сколько дневных снов в день?'],naps:['mahal','раз'],
 bedQ:['Odatda soat nechada uxlatasiz?','Во сколько обычно укладываете на ночь?'],wakeQ:['Ertalab soat nechada uyg\'onadi?','Во сколько просыпается утром?'],
 home:['Bosh sahifa','Главная'],add:['Yozish','Запись'],rep:['Hisobot','Отчёты'],more:['Yana','Ещё'],
 today:['Bugun','Сегодня'],greet:['Xayrli kun','Здравствуйте'],
@@ -118,7 +135,7 @@ foods:['Nima yedi','Что ел(а)'],allergen:['* allergen bo\'lishi mumkin','*
 medName:['Dori nomi','Название'],dose:['Doza','Доза'],tempQ:['Harorat (°C)','Температура (°C)'],
 height:['Bo\'yi (sm)','Рост (см)'],weight:['Vazni (kg)','Вес (кг)'],head:['Bosh aylanasi (sm)','Окружность головы (см)'],
 when:['Qachon','Когда'],from:['Boshlanishi','Начало'],to:['Tugashi','Конец'],note:['Izoh','Заметка'],
-save:['Saqlash','Сохранить'],cancel:['Bekor qilish','Отмена'],undo:['Qaytarish','Вернуть'],deleted:['O\'chirildi','Удалено'],saved:['Saqlandi','Сохранено'],
+save:['Saqlash','Сохранить'],tpPick:['Vaqtni tanlang','Выберите время'],tpTitle:['Vaqtni tanlang','Выберите время'],tpOk:['Tayyor','Готово'],tpToday:['Bugun','Сегодня'],tpYest:['Kecha','Вчера'],errPick:['Uyg\'onish va yotish vaqtini tanlang','Выберите время подъёма и ночного сна'],cancel:['Bekor qilish','Отмена'],undo:['Qaytarish','Вернуть'],deleted:['O\'chirildi','Удалено'],saved:['Saqlandi','Сохранено'],
 bath:['Cho\'milish','Купание'],tummy:['Qorin ustida','На животике'],story:['Ertak o\'qish','Чтение'],screen:['Ekran','Экран'],outd:['Ko\'chada','На улице'],ind:['Uyda o\'yin','Игры дома'],teeth:['Tish yuvish','Чистка зубов'],skin:['Teri-teri','Кожа к коже'],
 errTime:['Tugash vaqti boshlanishdan keyin bo\'lishi kerak','Конец должен быть позже начала'],errReq:['To\'ldiring','Заполните'],
 day:['Kun','День'],week:['Hafta','Неделя'],list:['Ro\'yxat','Список'],sum:['Xulosa','Итоги'],all:['Hammasi','Все'],
@@ -251,8 +268,8 @@ function onboard(){
  h+='<div class="hero row"><img src="'+LOGO+'" width="72" height="72" alt="" style="border-radius:50%;background:#fff"><div><h1>'+t('app')+'</h1><div class="mut">'+t('by')+'</div><div class="mut" style="margin-top:4px">'+t('welcome')+'</div></div></div><div class="card">';
  if(s===1)h+=`<label>${t('nameQ')}</label><input id="ob_name" placeholder="${t('namePh')}" value="${esc(V('ob_name',''))}">`;
  if(s===2)h+=`<label>${t('birthQ')}</label><input id="ob_birth" type="date" max="${dstr(Date.now())}" value="${V('ob_birth','')}">`;
- if(s===3)h+=`<label>${t('napsQ')} <b id="nv">${V('ob_naps',2)}</b> ${t('naps')}</label><input id="ob_naps" type="range" min="0" max="5" value="${V('ob_naps',2)}" oninput="document.getElementById('nv').textContent=this.value">`;
- if(s===4)h+=`<label>${t('wakeQ')}</label><input id="ob_wake" type="time" value="${V('ob_wake','07:00')}"><label>${t('bedQ')}</label><input id="ob_bed" type="time" value="${V('ob_bed','20:30')}">`;
+ if(s===3)h+=`<label>${t('napsQ')}</label>${STEP('ob_naps',V('ob_naps',2),0,8)}<div class="mut" style="text-align:center">${t('naps')}</div>`;
+ if(s===4)h+=`<label>${t('wakeQ')}</label>${TP('ob_wake',V('ob_wake',''),'07:00')}<label>${t('bedQ')}</label>${TP('ob_bed',V('ob_bed',''),'20:00')}`;
  return h+`<div class="err">${ui.err}</div><div style="height:10px"></div><button class="btn" data-a="obnext">${t('next')} (${s}/4)</button></div></div>`;
 }
 function homeTimers(){
@@ -362,7 +379,7 @@ function morePage(){
  }
  if(m==='plan'){
   const V=(k,d)=>ui.vals[k]!==undefined?ui.vals[k]:d;
-  h+=`<h1>${t('plan')}</h1><div class="card"><label>${t('wakeAt')}</label><input type="time" id="pw_wake" value="${V('pw_wake',S.child.wake||'07:00')}"><label>${t('napsQ')}: <b id="pn">${V('pw_naps',S.child.naps)}</b></label><input type="range" id="pw_naps" min="0" max="5" value="${V('pw_naps',S.child.naps)}" oninput="document.getElementById('pn').textContent=this.value"><label>${t('bedQ')}</label><input type="time" id="pw_bed" value="${V('pw_bed',S.child.bed||'20:30')}"><div style="height:10px"></div><button class="btn" data-a="plan">${t('make')}</button></div>`;
+  h+=`<h1>${t('plan')}</h1><div class="card"><label>${t('wakeAt')}</label>${TP('pw_wake',V('pw_wake',S.child.wake||''),'07:00')}<label>${t('napsQ')}</label>${STEP('pw_naps',V('pw_naps',S.child.naps),0,8)}<label>${t('bedQ')}</label>${TP('pw_bed',V('pw_bed',S.child.bed||''),'20:00')}<div style="height:10px"></div><button class="btn" data-a="plan">${t('make')}</button></div>`;
   if(ui.plan)h+=`<div class="card">${ui.plan.items.map(i=>`<div class="sw"><b>${p2(Math.floor(i.m/60))}:${p2(i.m%60)}</b><span>${i.k==='wake'?'☀️ '+t('wakeUp'):i.k==='nap'?'🌙 '+t('nap')+(i.n?' · '+i.n:''):'🌛 '+t('night')}</span></div>`).join('')}<div class="mut" style="margin:8px 0">${t('planNote')}</div><button class="btn sec" data-a="savePlan">${t('savePlan')}</button></div>`;
  }
  if(m==='contr'){
@@ -376,7 +393,7 @@ function morePage(){
  if(m==='ai')h+=`<h1>${t('ai')}</h1><div class="card chat" id="chat"><div class="msg a">${t('aiHello')}</div>`+S.chat.map(c=>`<div class="msg ${c.r}">${esc(c.x)}</div>`).join('')+`</div><div class="row"><input id="f_q" placeholder="${t('ask')}"><button class="btn sm" data-a="ask">${t('send')}</button></div><div class="disc">${t('disc')}</div>`;
  if(m==='set'){
   const c=S.child;
-  h+=`<h1>${t('set')}</h1><div class="card"><h3>${t('kidsT')}</h3>${S.children.map(c=>`<div class="sw"><button class="kid ${c.id===S.cur?'on':''}" data-a="kid" data-v="${c.id}"><i>${esc((c.name||'?').trim().charAt(0).toUpperCase())}</i>${esc(c.name)}</button><button class="x" data-a="delkid" data-v="${c.id}">${ui.delKid===c.id?t('delKidSure'):'✕'}</button></div>`).join('')}<div style="height:8px"></div><button class="btn sec" data-a="addkid">＋ ${t('addKid')}</button></div><div class="card row"><img src="${LOGO}" width="56" height="56" alt="" style="border-radius:50%"><div><b>${t('app')}</b><div class="mut">${t('by')}</div></div></div><div class="card"><label>${t('lang')}</label><div class="row"><button class="btn sec sm" data-a="lang2" data-v="uz">O'zbekcha</button><button class="btn sec sm" data-a="lang2" data-v="ru">Русский</button></div><label>${t('childN')}</label><input id="s_name" value="${esc(c.name)}"><label>${t('birth')}</label><input id="s_birth" type="date" value="${c.birth}"><label>${t('napsQ')} <b id="nv2">${c.naps}</b></label><input id="s_naps" type="range" min="0" max="5" value="${c.naps}" oninput="document.getElementById('nv2').textContent=this.value"><label>${t('wakeQ')}</label><input id="s_wake" type="time" value="${c.wake||'07:00'}"><label>${t('bedQ')}</label><input id="s_bed" type="time" value="${c.bed||'20:30'}"><div style="height:12px"></div><button class="btn" data-a="saveset">${t('save')}</button></div>`;
+  h+=`<h1>${t('set')}</h1><div class="card"><h3>${t('kidsT')}</h3>${S.children.map(c=>`<div class="sw"><button class="kid ${c.id===S.cur?'on':''}" data-a="kid" data-v="${c.id}"><i>${esc((c.name||'?').trim().charAt(0).toUpperCase())}</i>${esc(c.name)}</button><button class="x" data-a="delkid" data-v="${c.id}">${ui.delKid===c.id?t('delKidSure'):'✕'}</button></div>`).join('')}<div style="height:8px"></div><button class="btn sec" data-a="addkid">＋ ${t('addKid')}</button></div><div class="card row"><img src="${LOGO}" width="56" height="56" alt="" style="border-radius:50%"><div><b>${t('app')}</b><div class="mut">${t('by')}</div></div></div><div class="card"><label>${t('lang')}</label><div class="row"><button class="btn sec sm" data-a="lang2" data-v="uz">O'zbekcha</button><button class="btn sec sm" data-a="lang2" data-v="ru">Русский</button></div><label>${t('childN')}</label><input id="s_name" value="${esc(c.name)}"><label>${t('birth')}</label><input id="s_birth" type="date" value="${c.birth}"><label>${t('napsQ')}</label>${STEP('s_naps',c.naps,0,8)}<label>${t('wakeQ')}</label>${TP('s_wake',c.wake||'','07:00')}<label>${t('bedQ')}</label>${TP('s_bed',c.bed||'','20:00')}<div style="height:12px"></div><button class="btn" data-a="saveset">${t('save')}</button></div>`;
   h+=`<div class="card"><h3>${t('homeCfg')}</h3>`+['pred','today','quick','last','tip'].map(k=>`<div class="sw"><span>${t('c_'+k)}</span><span class="chip ${S.cfg[k]?'on':''}" data-a="cfg" data-v="${k}">${S.cfg[k]?'ON':'OFF'}</span></div>`).join('')+'</div>';
   h+=`<div class="card"><h3>${t('backup')}</h3><div class="row"><button class="btn sec sm" data-a="exp">${t('exp')}</button><button class="btn sec sm" data-a="imp">${t('imp')}</button></div><textarea id="f_json" rows="4" placeholder="${t('impPh')}" style="margin-top:8px">${esc(ui.json)}</textarea></div>`;
   h+=`<button class="btn red" data-a="reset">${ui.rst?t('sure'):t('reset')}</button>`;
@@ -389,13 +406,13 @@ const V=(id,def)=>ui.vals[id]!==undefined?ui.vals[id]:def;
 const chips=(list,key,cur,multi)=>list.map(o=>{const on=multi?(cur||[]).indexOf(o[0])>-1:cur===o[0];return `<span class="chip ${on?'on':''}" data-a="chip" data-k="${key}" data-v="${o[0]}" data-m="${multi?1:0}">${o[1]}</span>`}).join('');
 function childSheet(){
  const c=S.child||{};
- return `<div class="sheetbg" data-a="bg"><div class="sheet"><h2 style="margin:0 0 6px">👶 ${t('newKid')}</h2><label>${t('nameQ')}</label><input id="f_cname" placeholder="${t('namePh')}" value="${esc(V('f_cname',''))}"><label>${t('birthQ')}</label><input id="f_cbirth" type="date" max="${dstr(Date.now())}" value="${V('f_cbirth','')}"><label>${t('napsQ')} <b id="cn">${V('f_cnaps',2)}</b></label><input id="f_cnaps" type="range" min="0" max="5" value="${V('f_cnaps',2)}" oninput="document.getElementById('cn').textContent=this.value"><label>${t('wakeQ')}</label><input id="f_cwake" type="time" value="${V('f_cwake',c.wake||'07:00')}"><label>${t('bedQ')}</label><input id="f_cbed" type="time" value="${V('f_cbed',c.bed||'20:30')}"><div class="err">${ui.err}</div><div style="height:12px"></div><button class="btn" data-a="savekid">${t('save')}</button><div style="height:8px"></div><button class="btn sec" data-a="close">${t('cancel')}</button></div></div>`;
+ return `<div class="sheetbg" data-a="bg"><div class="sheet"><h2 style="margin:0 0 6px">👶 ${t('newKid')}</h2><label>${t('nameQ')}</label><input id="f_cname" placeholder="${t('namePh')}" value="${esc(V('f_cname',''))}"><label>${t('birthQ')}</label><input id="f_cbirth" type="date" max="${dstr(Date.now())}" value="${V('f_cbirth','')}"><label>${t('napsQ')}</label>${STEP('f_cnaps',V('f_cnaps',2),0,8)}<label>${t('wakeQ')}</label>${TP('f_cwake',V('f_cwake',''),'07:00')}<label>${t('bedQ')}</label>${TP('f_cbed',V('f_cbed',''),'20:00')}<div class="err">${ui.err}</div><div style="height:12px"></div><button class="btn" data-a="savekid">${t('save')}</button><div style="height:8px"></div><button class="btn sec" data-a="close">${t('cancel')}</button></div></div>`;
 }
 function sheetHTML(){
  const sh=ui.sheet,ty=sh.type,now=dtl(Date.now());
  if(ty==='child')return childSheet();
  let h=`<div class="sheetbg" data-a="bg"><div class="sheet"><h2 style="margin:0 0 2px">${ic({type:ty,d:{kind:sh.ak}})} ${t(ty)}</h2><div class="mut" style="margin-bottom:4px">👶 ${esc(S.child.name)}</div>`;
- if(ty==='sleep')h+=`<label>${t('from')}</label><input type="datetime-local" id="f_s" value="${V('f_s',dtl(Date.now()-36e5))}"><label>${t('to')}</label><input type="datetime-local" id="f_e" value="${V('f_e',now)}">`;
+ if(ty==='sleep')h+=`<label>${t('from')}</label>${DTP('f_s',V('f_s',dtl(Date.now()-36e5)))}<label>${t('to')}</label>${DTP('f_e',V('f_e',now))}`;
  else{
   if(ty==='feed'){
    h+='<div class="tabs">'+['nurse','bottle','solid'].map(m=>`<button class="${sh.mode===m?'on':''}" data-a="mode" data-v="${m}">${t(m)}</button>`).join('')+'</div>';
@@ -409,7 +426,7 @@ function sheetHTML(){
   if(ty==='temp')h+=`<label>${t('tempQ')}</label><input type="number" step="0.1" id="f_c" inputmode="decimal" value="${V('f_c','36.6')}">`;
   if(ty==='growth')h+=`<label>${t('height')}</label><input type="number" step="0.1" id="f_h" inputmode="decimal" value="${V('f_h','')}"><label>${t('weight')}</label><input type="number" step="0.01" id="f_w" inputmode="decimal" value="${V('f_w','')}"><label>${t('head')}</label><input type="number" step="0.1" id="f_hc" inputmode="decimal" value="${V('f_hc','')}">`;
   if(ty==='act')h+=chips(ACTS.map(k=>[k,ACTIC[k]+' '+t(k)]),'ak',sh.ak)+`<label>${t('minQ')}</label><input type="number" id="f_min" inputmode="numeric" value="${V('f_min',15)}">`;
-  h+=`<label>${t('when')}</label><input type="datetime-local" id="f_s" value="${V('f_s',now)}">`;
+  h+=`<label>${t('when')}</label>${DTP('f_s',V('f_s',now))}`;
  }
  h+=`<label>${t('note')}</label><input id="f_note" value="${esc(V('f_note',''))}">`;
  h+=`<div class="err">${ui.err}</div><div style="height:12px"></div><button class="btn" data-a="savelog">${t('save')}</button><div style="height:8px"></div><button class="btn sec" data-a="close">${t('cancel')}</button></div></div>`;
@@ -443,7 +460,7 @@ function saveLog(){
 
 /* ---------- plan, csv, ai ---------- */
 function makePlan(){
- capture();const w=(ui.vals.pw_wake||'07:00').split(':'),n=+(ui.vals.pw_naps!=null?ui.vals.pw_naps:S.child.naps),bd=(ui.vals.pw_bed||'20:30').split(':'),ww=wakeWin(ageM())*60;
+ capture();if(!ui.vals.pw_wake||!ui.vals.pw_bed){toast(t('errPick'));return}const w=(ui.vals.pw_wake||'07:00').split(':'),n=+(ui.vals.pw_naps!=null?ui.vals.pw_naps:S.child.naps),bd=(ui.vals.pw_bed||'20:30').split(':'),ww=wakeWin(ageM())*60;
  let cur=+w[0]*60+ +w[1];const items=[{m:cur,k:'wake'}],nl=n>=3?60:90;
  for(let i=0;i<n;i++){cur+=ww;items.push({m:cur,k:'nap',n:dur(nl*6e4)});cur+=nl}
  cur+=ww;const target=+bd[0]*60+ +bd[1];if(Math.abs(cur-target)>90)cur=target;
@@ -460,11 +477,48 @@ function aiReply(q){
  return ru?'Это демо-версия помощника: пока я отвечаю на вопросы про сон, питание, температуру и подгузники. Полноценный ИИ подключим на следующем этапе.':'Bu yordamchining sinov varianti: hozircha uyqu, ovqat, harorat va taglik haqidagi savollarga javob beraman. To\'liq AI keyingi bosqichda.';
 }
 
+
+/* ---------- pickers (soat, son, sana) ---------- */
+function TP(id,val,def){return `<button type="button" class="tpb ${val?'':'empty'}" data-a="tp" data-v="${id}" data-def="${def||'07:00'}">🕒 <b id="${id}_d">${val||t('tpPick')}</b></button><input type="hidden" id="${id}" value="${val||''}">`}
+function STEP(id,val,mn,mx){return `<div class="step"><button type="button" data-a="stp" data-v="${id}|-1|${mn}|${mx}">−</button><b id="${id}_d">${val}</b><button type="button" data-a="stp" data-v="${id}|1|${mn}|${mx}">+</button></div><input type="hidden" id="${id}" value="${val}">`}
+function dtLabel(v){if(!v)return t('tpPick');const d=v.slice(0,10),tm=v.slice(11,16);const td=dstr(Date.now()),yd=dstr(Date.now()-864e5);return (d===td?t('tpToday'):d===yd?t('tpYest'):v.slice(8,10)+'.'+v.slice(5,7))+', '+tm}
+function DTP(id,val){return `<button type="button" class="tpb" data-a="dtp" data-v="${id}">🕒 <b id="${id}_d">${dtLabel(val)}</b></button><input type="hidden" id="${id}" value="${val}">`}
+function openPicker(id,withDate,defTime){
+ const inp=document.getElementById(id);if(!inp)return;
+ let cur=inp.value||'',day,hh,mm;
+ if(withDate){day=(cur||dtl(Date.now())).slice(0,10);cur=(cur||dtl(Date.now())).slice(11,16)}
+ else if(!cur)cur=defTime||'07:00';
+ hh=+cur.split(':')[0];mm=+cur.split(':')[1];
+ const box=document.createElement('div');box.className='tpm';
+ let dh='';
+ if(withDate){const ds=[0,1,2,3].map(k=>dstr(Date.now()-k*864e5));dh='<div class="tpd">'+ds.map((d,k)=>`<button type="button" class="chip" data-day="${d}" style="${d===day?'background:var(--pri);color:#fff;border-color:var(--pri)':''}">${k===0?t('tpToday'):k===1?t('tpYest'):d.slice(8,10)+'.'+d.slice(5,7)}</button>`).join('')+'</div>'}
+ const col=(n,sel)=>{let x='<div class="pad"></div>';for(let i=0;i<n;i++)x+=`<div data-i="${i}">${p2(i)}</div>`;return x+'<div class="pad"></div>'};
+ box.innerHTML=`<div class="tpbox"><h3>${t('tpTitle')}</h3>${dh}<div class="tpw"><div class="tpc" id="tp_h">${col(24)}</div><div class="tpsep">:</div><div class="tpc" id="tp_m">${col(60)}</div></div><button type="button" class="btn" id="tp_ok">${t('tpOk')}</button><div style="height:8px"></div><button type="button" class="btn sec" id="tp_x">${t('cancel')}</button></div>`;
+ document.body.appendChild(box);
+ const H=box.querySelector('#tp_h'),M=box.querySelector('#tp_m');
+ H.scrollTop=hh*44;M.scrollTop=mm*44;
+ [H,M].forEach(c=>c.addEventListener('click',e=>{const it=e.target.closest('[data-i]');if(it)c.scrollTo({top:+it.getAttribute('data-i')*44,behavior:'smooth'})}));
+ box.querySelectorAll('[data-day]').forEach(b=>b.addEventListener('click',()=>{day=b.getAttribute('data-day');box.querySelectorAll('[data-day]').forEach(x=>{const on=x===b;x.style.background=on?'var(--pri)':'';x.style.color=on?'#fff':'';x.style.borderColor=on?'var(--pri)':''})}));
+ const close=()=>box.remove();
+ box.addEventListener('click',e=>{if(e.target===box)close()});
+ box.querySelector('#tp_x').onclick=close;
+ box.querySelector('#tp_ok').onclick=()=>{
+  const h=Math.min(23,Math.max(0,Math.round(H.scrollTop/44))),m=Math.min(59,Math.max(0,Math.round(M.scrollTop/44)));
+  const tm=p2(h)+':'+p2(m),val=withDate?day+'T'+tm:tm;
+  inp.value=val;ui.vals[id]=val;
+  const d=document.getElementById(id+'_d');if(d)d.textContent=withDate?dtLabel(val):tm;
+  const b=d&&d.closest('.tpb');if(b)b.classList.remove('empty');
+  close();
+ };
+}
 /* ---------- events ---------- */
 document.addEventListener('click',e=>{
  const el=e.target.closest('[data-a]');if(!el)return;
  const a=el.getAttribute('data-a'),v=el.getAttribute('data-v');
  switch(a){
+ case'tp':openPicker(v,false,el.getAttribute('data-def'));break;
+ case'dtp':openPicker(v,true);break;
+ case'stp':{const q=v.split('|'),i=document.getElementById(q[0]);if(!i)break;const nv=Math.min(+q[3],Math.max(+q[2],(+i.value||0)+ +q[1]));i.value=nv;ui.vals[q[0]]=String(nv);const d=document.getElementById(q[0]+'_d');if(d)d.textContent=nv;break}
  case'bg':if(e.target===el){capture();ui.sheet=null;render()}break;
  case'lang':S.lang=v;save();render();break;
  case'obnext':{
@@ -472,7 +526,7 @@ document.addEventListener('click',e=>{
   if(ui.ob===1){const n=g('ob_name').value.trim();if(!n){ui.err=t('errReq');render();break}ui.vals.ob_name=n;ui.ob=2;ui.err=''}
   else if(ui.ob===2){const b=g('ob_birth').value;if(!b){ui.err=t('errReq');render();break}ui.vals.ob_birth=b;ui.ob=3;ui.err=''}
   else if(ui.ob===3){ui.vals.ob_naps=g('ob_naps').value;ui.ob=4}
-  else if(ui.ob===4){addChildObj({name:ui.vals.ob_name,birth:ui.vals.ob_birth,naps:+ui.vals.ob_naps,wake:g('ob_wake').value||'07:00',bed:g('ob_bed').value||'20:30'});ui.vals={};ui.ob=1}
+  else if(ui.ob===4){const wk=g('ob_wake').value,bd=g('ob_bed').value;if(!wk||!bd){ui.vals.ob_wake=wk;ui.vals.ob_bed=bd;ui.err=t('errPick');render();break}addChildObj({name:ui.vals.ob_name,birth:ui.vals.ob_birth,naps:+ui.vals.ob_naps,wake:wk,bed:bd});ui.vals={};ui.ob=1;ui.err=''}
   render();break}
  case'tab':ui.tab=v;ui.more=null;render();window.scrollTo(0,0);break;
  case'sub':ui.sub=v;render();break;
@@ -501,7 +555,7 @@ document.addEventListener('click',e=>{
  case'ask':{const q=(document.getElementById('f_q').value||'').trim();if(!q)break;S.chat.push({r:'u',x:q},{r:'a',x:aiReply(q)});if(S.chat.length>40)S.chat=S.chat.slice(-40);save();ui.vals={};render();const c=document.getElementById('chat');if(c)c.scrollTop=c.scrollHeight;break}
  case'kid':S.cur=v;normalize();ui.plan=null;ui.delKid=null;save();render();window.scrollTo(0,0);break
  case'addkid':ui.vals={};ui.err='';ui.sheet={type:'child'};render();break
- case'savekid':{capture();const nm=(ui.vals.f_cname||'').trim(),bd=ui.vals.f_cbirth;if(!nm||!bd){ui.err=t('errReq');render();break}addChildObj({name:nm,birth:bd,naps:+(ui.vals.f_cnaps||2),wake:ui.vals.f_cwake||'07:00',bed:ui.vals.f_cbed||'20:30'});ui.sheet=null;ui.vals={};ui.err='';ui.plan=null;ui.tab='home';render();toast(t('kidAdded'));break}
+ case'savekid':{capture();const nm=(ui.vals.f_cname||'').trim(),bd=ui.vals.f_cbirth;if(!nm||!bd){ui.err=t('errReq');render();break}if(!ui.vals.f_cwake||!ui.vals.f_cbed){ui.err=t('errPick');render();break}addChildObj({name:nm,birth:bd,naps:+(ui.vals.f_cnaps||0),wake:ui.vals.f_cwake,bed:ui.vals.f_cbed});ui.sheet=null;ui.vals={};ui.err='';ui.plan=null;ui.tab='home';render();toast(t('kidAdded'));break}
  case'delkid':{if(S.children.length<2){toast(t('onlyOne'));break}if(ui.delKid!==v){ui.delKid=v;render();break}S.children=S.children.filter(c=>c.id!==v);S.logs=S.logs.filter(l=>l.cid!==v);delete S.tm[v];delete S.plans[v];Object.keys(S.ms).forEach(k=>{if(k.indexOf(v+'|')===0)delete S.ms[k]});ui.delKid=null;normalize();save();render();toast(t('kidDeleted'));break}
  case'lang2':S.lang=v;save();render();break;
  case'cfg':S.cfg[v]=S.cfg[v]?0:1;save();render();break;
