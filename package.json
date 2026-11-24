@@ -1,0 +1,11 @@
+{
+  "name": "mama-pro",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Mama Pro by Feruza A'zam",
+  "dependencies": {
+    "@capacitor/android": "^6.1.0",
+    "@capacitor/cli": "^6.1.0",
+    "@capacitor/core": "^6.1.0"
+  }
+}

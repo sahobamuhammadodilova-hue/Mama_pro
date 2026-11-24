@@ -1,0 +1,6 @@
+{
+  "appId": "uz.mamapro.app",
+  "appName": "Mama Pro",
+  "webDir": "www",
+  "android": { "backgroundColor": "#fff7f4" }
+}
